@@ -1,0 +1,17 @@
+\subsection{Gradients} \label{Sec: Gradients}
+After defining the cost function and a suitable ansatz, we train the parameter $\theta = \{\theta_{l}\}$ to solve the problem in Eq. (\ref{Eqn: optimize theta with ansatz}) \cite{cerezo2021variational}.
+The cost function gradient helps the optimiser to find the global minima.
+Consider the cost function in Eq. (\ref{Eqn: Cost function}), for a unitary that parameterises rotation $e^{i \theta_l \sigma_{l}}$, where $\theta_l$ be the $l$-th element of $\theta$, $\sigma_l$ is a Pauli rotation operator.
+We can evaluate the gradient with the parameter-shift rule:
+\begin{equation}
+    \frac{\partial C}{\partial\theta_l}
+    = \sum_k \frac{1}{2 \sin{\alpha}}
+    \left(
+    \Tr[O_k U^\dagger(\theta_+) \rho_k U(\theta_+)]
+    - \Tr[O_k U^\dagger(\theta_-) \rho_k U(\theta_-)]
+    \right) \;,
+    \label{Eqn: Parameter-shift rules}
+\end{equation}
+with $\theta_{\pm} = \theta \pm \alpha e_l$, $\alpha \in \mathbb{R}$ and $e_l$ is a vector such that its $l$-th position have the value of 1, or else 0.
+
+Essentially, we can shift the $l$-th parameter by some amount $\alpha$, and Eq. (\ref{Eqn: Parameter-shift rules}) will calculate the gradient.

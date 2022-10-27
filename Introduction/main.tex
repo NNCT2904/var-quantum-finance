@@ -1,0 +1,16 @@
+\section{Introduction} \label{Sec: Introduction}
+
+\emph{Quantum computing} is the area of research that involves physics, computer science and mathematices.
+Theoretically, the computational power of a quantum processor would scale exponentially with the number of qubits, and eventually surpasses the classical computers.
+For this reason, many algorithms for quantum computers have been developed to solve problems that are challenging for classical computers, eg. the problems that belong to the non-deterministic polynomial time class \cite{williamsSolvingNPCompleteProblems2011,jiangQuantumAnnealingPrime2018,farhiQuantumApproximateOptimization2014}.
+Such algorithms are understood as the unitary matrices to perform operations on qubits values, and are often represented as \emph{quantum gates} on a \emph{quantum circuit}.
+
+In practical, available quantum hardware are severely constrainted in resourse due to decoherence, and their applications are thus limited.
+They are all described as Noisy Intermediate-Scale Quantum (or NISQ) computers \cite{brooksQuantumSupremacyHunt2019}.
+In other words, we can expect the technical maturity of nowadays quantum devices are comparable to the first computers one hundred years ago.
+At the current stage, all NISQ devices face the issue of precision for gate operations, the lack of fault-tolerance design to handle data integrity in case of decoherence, the limitation in the number of qubits in a processor, and the number of gates allowed for those qubits (the size of the circuit).
+
+In our discussion we will assume that the readers have some background knowledge of quantum computing, linear algebra, and machine learning.
+To gain such a background knowledge, we recommend the 2020 Qiskit Global Summer School course \cite{2020QiskitGlobal}, which provides some basic mathematics, theories and practices of quantum computing.
+The book by Sutor \cite{sutorDancingQubitsHow2019} also provides the foundations of quantum Computing plus an overview of issues related to the design of current quantum hardware and simulators.
+Finally, the 2021 Qiskit Global Summer School course \cite{2021QiskitGlobal} was focused on the selected aspects of machine learning for quantum devices.
