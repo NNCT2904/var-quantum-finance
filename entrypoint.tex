@@ -40,6 +40,7 @@
 \usepackage{physics}
 \usepackage{qcircuit}
 \usepackage{subcaption} 
+\usepackage{framed} 
 
 % Resolve rho and varrho symbols
 \usepackage{mathptmx}
@@ -274,7 +275,7 @@
 
 \usepackage{ragged2e}
 
-\title{Quantum Machine Learning in Finance}
+\title{Variational Quantum Algorithms in Finance}
 \author{Thanh Nguyen}
 \date{October 2022}
 
@@ -290,7 +291,19 @@
 
 \input{Introduction/main.tex}
 \input{RelatedWorks/main.tex}
-\input{Experiment/main.tex}
+\begin{framed}
+	Add the following topics:
+	\begin{itemize}
+		\item Portfolio Optimisation
+		\item Price/Option Prediction
+		\item Fraud Indicators
+		\item Credit Scoring
+		\item Financial Risk Assessment
+	\end{itemize}
+\end{framed}
+
+
+\input{PortfolioOptimisation/main.tex}
 \input{Results/main.tex}
 \input{Contributions/main.tex}
 

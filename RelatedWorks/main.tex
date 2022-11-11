@@ -1,8 +1,59 @@
 \section{Hybrid Quantum - Classical System} \label{Sec: Hybrid Quantum - Classical System}
 
-This section reviews the QNNs and VQAs, their structures, and their underpinning mathematics.
+This section reviews the structure and underpinning mathematics of hybrid quantum - classical algorithms, eg. VQAs.
+Such techniques that involves both quantum and classical components have been proposed to address the limitation of NISQ devices \cite{brooksQuantumSupremacyHunt2019}.
+Those restrictions include the lack of fault-tolerance design, the number of the available qubits per processors, and the depth of executable quantum circuits the practical use cases.
 
-\input{RelatedWorks/VQA.tex}
+In more details, the hybrid techniques such as VQA allows development of \emph{parameterised circuits}, which act as a template and capable of receiving trainable parameters.
+Those parameters can be used to sample circuits result iteratively in a quantum processor, and consequently be refined by a classical computer \cite{cerezo2021variational}.
+In this way, we can rely on a wide range of classical optimisers to find the optimal circuit for a particular problem, as these optimisers only treat the variational circutis as black boxes capable of yielding outputs from inputs and the trainable parameters.
+
+
+
+The process of solving a problem using VQAs involves three components: the \textit{training data}, the \textit{ansatzes}, and the \textit{Cost function}.
+Consider a problem requires VQA to solve and given the training data, we can first construct a \textit{cost function} $C$.
+By minimising the cost function value, we can obtain the optimal sequence of parameters $\theta$.
+The variational circuit, called \textit{ansatz}, is the target of our training.
+We aim to train the ansatz to so that its cost function $C(\theta)$ reaches the minimum value:
+\begin{equation}
+    \theta^* = \underset{\theta}{\arg \min} \;C(\theta)
+    \label{Eqn: optimize theta with ansatz}
+\end{equation}
+The cost function $C(\theta)$ is estimated by a quantum computer, while we can select a wide range of classical optimiser to train the parameters $\theta$.
+Figure \ref{Fig: VQA diagram} this hybrid architecture and demonstrate the training process in more detail.
+
+% Consider a simple problem that we want to solve using VQA, given access to the training data.
+% The first step is to construct a \textit{cost function} $C$ used to search for an optimal set of circuit parameters, which is achieved by minimising the cost function during the training process.
+% We can simplify the development of variational circuits by composing the circuit templates called \textit{ansatze}.
+% \textit{Ansatz} is the parameterised circuit that depends on a set of parameters $\theta$.
+% We aim to train the ansatze by optimising the parameters $\theta$s so that the cost function $C$ reaches its minimum, thus satisfying:
+% \begin{equation}
+%     \theta^* = \underset{\theta}{\arg \min} \;C(\theta)
+%     \label{Eqn: optimize theta with ansatz}
+% \end{equation}
+
+% In short, the cost function $C(\theta)$ is calculated using the quantum computer, while the classical optimiser trains the parameters $\theta$. Figure \ref{Fig: VQA diagram} explains the VQA architecture and elaborates its training process in more detail.
+\todo{paraphrase}
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{Appendices/vqadiagram.png}
+    \caption{
+        An illustrative diagram of a ganeral Variational Quantum Algorithm.
+        The algorithm is a hybrid quantum-classical that involves:
+        (1) A cost function $C(\theta)$;
+        (2) An ansatz that receives trainable parameter $\theta$ and yields outputs from inputs;
+        (3) A set of training data $\{\rho_k\}$ so the ansatz can learn the pattern.
+        We use the quantum computer to calculate the cost function $C(\theta)$ for each step of optimisation.
+        An optimisation algorithm in a classical computer is in charge to find the global minima in the cost landscape of $C(\theta)$, thus satisfy Eq. (\ref{Eqn: optimize theta with ansatz}).
+        VQA's result is an approximation of the problem solution, which can be probability distribution, bit string, gate sequence and quantum operator.
+        Figure from Cerezo et al. \cite{cerezo2021variational}.
+    }
+    \label{Fig: VQA diagram}
+\end{figure}
+
+
+
+
 \input{RelatedWorks/CostFunc.tex}
 \input{RelatedWorks/Ansatze.tex}
 \input{RelatedWorks/Gradients.tex}

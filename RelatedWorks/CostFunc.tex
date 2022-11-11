@@ -1,18 +1,24 @@
-\subsection{The Cost Function} \label{Sec: The Cost Function}
-Encoding the problem into a cost function is the first step in solving a problem using VQA \cite{cerezo2021variational}.
-The cost function is equivalent to that used in classical machine learning.
-It maps the values of the trainable parameters $\theta$ into real values, which represent the measure of distance from an optimum solution.
-For a function $f$ that receives input states $\{\rho_k\}$, observables $\{O_k\}$, and a parameterized circuit $U(\theta)$, the cost is expressed as:
+\subsection{The Cost Function} \label{Sec: The Cost Function}\
+
+% Encoding the problem into a cost function is the first step in solving a problem using VQA \cite{cerezo2021variational}.
+% The cost function is equivalent to that used in classical machine learning.
+% It maps the values of the trainable parameters $\theta$ into real values, which represent the measure of distance from an optimum solution.
+% For a function $f$ that receives input states $\{\rho_k\}$, observables $\{O_k\}$, and a parameterized circuit $U(\theta)$, the cost is expressed as:
+
+Both classical machine learning and quantum machine learning use the cost function to map the the trainable parameters $\theta$ into a value that represent the distance from the optimal solution.
+This is the first step in finding a solution using VQA \cite{cerezo2021variational}.
+For a function $f$ with the input states $\{\rho_k\}$, the observables $\{O_k\}$ and the parameterised circuit $U(\theta)$, the cost is as following equation:
+
 \begin{equation}
     C(\theta) = f(\{\rho_k\}, \{O_k\}, U(\theta)) \;,
 \end{equation}
-or this form with a set of functions $\{ f_k \}$ and the square of a distance matrix given as its trace $Tr$:
+or this equation with a set of functions $\{f_k\}$ and the trace $Tr$ as the square of a distance matrix:
 \begin{equation}
     C(\theta) = \sum_k f_k \left(\Tr[ O_k U(\theta) \rho_k U^\dagger(\theta) ]\right) \;,
     \label{Eqn: Cost function}
 \end{equation}
 
-For the function to be used as a cost function it must meet a number of criteria:
-(1) The cost function must be 'faithful' and 'operationally meaningful', such that the minimum of $C(\theta)$ should correspond to the solution of the problem, and the lower cost function indicate a better solution in general;
-(2) Cost function must be 'efficiently estimable' by the measurement conducted on a quantum computer and the subsequent classical post-processing;
-(3) The cost must be 'trainable', such that the parameters $\theta$ could be efficiently optimised.
+A cost function of an VQA algorithm must meet a number of criteria:
+(1) The cost function must be 'faithful' and 'operationally meaningful', the minimum value of $C(\theta)$ should correspond to the optimal solution of the problem, and we can expect the better solution with lower cost function value in general;
+(2) The cost function must be 'efficiently estimated' on a quantum computer by measuring qubits values;
+(3) The cost function must be 'trainable', such that the parameters $\theta$ could be efficiently optimised.
