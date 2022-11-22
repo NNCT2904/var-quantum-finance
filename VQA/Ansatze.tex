@@ -1,0 +1,56 @@
+\subsection{Ansatze} \label{Sec: Ansatze}
+
+\todo{paraphrase}
+
+\begin{figure}
+    \centerline{
+    \Qcircuit @C=1em @R=0em {
+    & \multigate{2}{U_1(\theta_1)}    & \multigate{2}{U_2(\theta_2)}    & \qw &        & & \multigate{2}{U_L(\theta_L)}   & \qw\\
+    & \ghost{U_1(\theta_1)}           & \ghost{U_2(\theta_2)}           & \qw & \cdots & & \ghost{U_L(\theta_L)}          & \qw\\
+    & \ghost{U_1(\theta_1)}           & \ghost{U_2(\theta_2)}           & \qw &        & & \ghost{U_L(\theta_L)}          & \qw
+    \gategroup{1}{2}{3}{7}{.6em}{--}
+    }
+    }
+    \centerline{$U(\theta)$}
+    \centerline{}
+    \centerline{}
+    \centerline{
+    \Qcircuit @C=1em @R=0em{
+    & \multigate{1}{}   & \ctrl{2}  & \gate{}           & \qw \\
+    & \ghost{}          & \qw       & \multigate{1}{}   & \qw \\
+    & \gate{}           & \targ     & \ghost{}          & \qw
+    \gategroup{1}{2}{3}{4}{.6em}{--}
+    }
+    }
+    \centerline{$U_l(\theta_l)$}
+    \caption{
+        A diagram of a sample ansatz (above), the ansatz is a sequence of unitaries $U_l(\theta_l)$ (below).
+        The ansatz $U(\theta)$ receives parameters $\theta$ is expressed by $L$ layers of unitaries $U_l(\theta_l)$ for $l$ is the layer indices.
+        Each unitary $U_l(\theta_l)$ is a circuit composed of a mix of parameterised and unparametrised gates.
+    }\label{Fig: Ansatz diagram}
+\end{figure}
+
+% In physics and mathematics, \emph{ansatz} (plural \emph{ansatze}) is an educated guess or a starting point from which you start looking for a solution to the problem at hand. 
+% In quantum computing, \emph{ansatz} is a parameterised circuit, formed as a sequence of unitary (or "atomic") circuits, which is used as a framework for the circuit optimisation.
+% In general, the location of parameters $\theta$ is determined by the ansatz form and can be trained to minimise the cost.
+% The ansatz structure can be defined based on the problem (called 'problem-inspired ansatze') or a generic structure (called 'problem agnostic ansatze') that can be used without any relevant information available \cite{cerezo2021variational}.
+
+In physics and mathematics, the term \emph{ansatz} (plural \emph{ansatze}) is reffered to a starting point wich you begin looking for a solution to the problem at hand.
+For Quantum computing, we call the parameterised circuit as \emph{ansatz}, form as a sequence of smaller unitary circuits, serves as a framework and the starting point for circuit optimisation.
+There are two ways to define the structure of ansatz, we call 'problem-inspired ansatze' if the ansatz is tailor made for a problem, or 'problem agnostic ansatze' for a generic structure that can be used with any problem \cite{cerezo2021variational}.
+The location of the parameters $\theta$ in the cost function landscape is determined by the ansatz, and can be further optimised toward the minima.
+
+
+% The cost function in Eq. (\ref{Eqn: Cost function}) encodes the parameters $\theta$ in a unitary $U(\theta)$ and applies to the input states of the circuit.
+% The Figure \ref{Fig: Ansatz diagram} shows that $U(\theta)$ can be expressed as a product of $L$ consecutive unitaries:
+
+The cost function (see Eq. (\ref{Eqn: Cost function})) can encode the parameters $\theta$ in the ansatz $U(\theta)$.
+As can be seen from the Figure \ref{Fig: Ansatz diagram}, the ansatz $U(\theta)$ is a chain of consecutive unitaries $U_l(\theta_l)$:
+\begin{equation}
+    U(\theta) = U_L(\theta_L) \cdots U_2(\theta_2) U_1(\theta_1)\;,
+\end{equation}
+with each layer of unitary:
+\begin{equation}
+    U_l(\theta_l) = \prod_m e^{-i\theta_m H_m} W_m
+\end{equation}
+for unparamaterized unitary $W_m$, hermitian operator $H_m$, and $\theta_l$ is the $l$-th element of $\theta$.

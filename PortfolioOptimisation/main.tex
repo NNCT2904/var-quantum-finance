@@ -1,2 +1,39 @@
-\section{Portfolio Optimisation} \label{Sec: Portfolio Optimisation}
+\section{Portfolio Optimisation - Mean Variance Analysis} \label{Sec: Portfolio Optimisation}
 
+\emph{Portfolio Optimisation} is the problem of optimising the distribution of assets in a period of time to increase the maximum expected returns and minimise any financial risks of the portfolio owners at the end of the trading period \cite{abdelazizMultiobjectiveStochasticProgramming2007}.
+By solving the portfolio optimisation problem, owners can achieve risk-free investment, at the same time their long-term profit with the focused on maximise the earnings.
+
+In more detail, for $N$ number of assets, we expect an $N$-dimensional vector of weights $\bar{\omega_t}$.
+The weight of each asset $n$ at a peropid time $t = t_i, t_{i+1}, \cdots, t_f$ is $\bar{\omega_{n,t}}$ where $t_i$ is the initial trading time and $t_f$ is the final trading.
+$\Sigma_t$ is a $N \times N$ matrix which represents the assets' covariance at time $t$ and $\mu_t$ is $N$-length vector that forcasts the return at time $t$.
+For a trading trajectory as a set of vectors $\{ \bar\omega_{t_i}, \cdots, \bar\omega_{t_f} \}$, we estimate the return as following equation:
+\begin{equation}
+    \text{Return} = \sum^{t_f}_{t=t_i}\mu^T_t \bar\omega_t,
+\end{equation}
+and the risk of the trading trajectory as:
+\begin{equation}
+    \text{Risk} = \frac{1}{2} \sum^{t_f}_{t=t_i} \bar\omega^T_t \Sigma_t \bar\omega_t,
+\end{equation}
+
+In portfolio optimisation, we aim to find the trajectory that maximise the returns while not raising the risk factor.
+We define the total investment $K$ as
+\begin{equation} \label{Eqn: normalised weight portfolio}
+    \sum^N_{n=1} \bar\omega_{n,t} =  K \forall t,
+\end{equation}
+and the normalised weight as percentage of the total investment:
+\begin{equation}
+    \omega_{n,t} = \frac{\bar\omega_{n,t}}{K}
+\end{equation}\
+The optimising problem can be solved by finding the normailised weights $\{ \omega_{t_i}, \cdots, \omega_{t_f} \}$, which minimises the following cost function \cite{rosenbergSolvingOptimalTrading2015}:
+\begin{equation}
+    \mathcal{H} = \sum^{t_f}_{t=t_i} -\mu^T_t \omega_t + \frac{\gamma}{2}\omega^T_t \Sigma_t\omega_t + \rho(u^T\omega_t-1)^2
+\end{equation}
+For $\gamma$ is the \emph{risk aversion} hyperparameter that enable investors to explore risky investments and $\rho$ is a penalty term.
+The cost function $\mathcal{H}$, by quantum mechanics analogy, is reffered as \emph{Hamiltonian}.
+The $N$-dimensional vector $u$ for $u_n = 1 \forall n$ helps compact the Equation \ref{Eqn: normalised weight portfolio}
+
+There are two ways to solve this optimisation problem by quantum machine learning \cite{mugelDynamicPortfolioOptimization2022}: (1) Variational Quantum Eigensolver (VQE); and (2) Tensor Networks.
+We have discussed the general idea behind quantum machine learning in section \ref{Sec: Hybrid Quantum - Classical System}.
+VQE leverage the quantum machine learning architecture for optimisation.
+In this case, the target of optimisation is a quantum state (the ansatz) to estimate the ground state of a Hamiltonian.
+The ansatzs' parameters are fine-tuned in a number of iterations to lower the energy of the quantunm state
