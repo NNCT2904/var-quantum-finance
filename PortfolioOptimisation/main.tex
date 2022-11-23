@@ -36,4 +36,6 @@ There are two ways to solve this optimisation problem by quantum machine learnin
 We have discussed the general idea behind quantum machine learning in section \ref{Sec: Hybrid Quantum - Classical System}.
 VQE leverage the quantum machine learning architecture for optimisation.
 In this case, the target of optimisation is a quantum state (the ansatz) to estimate the ground state of a Hamiltonian.
-The ansatzs' parameters are fine-tuned in a number of iterations to lower the energy of the quantunm state
+The ansatzs' parameters are fine-tuned in a number of iterations to lower the energy of the quantunm state.
+Tensor Network is another techniqure to compose the ansatz to approximate the ground states for Hamiltonian \cite{orusTensorNetworksComplex2019}.
+In this techniques, the optimisation problem is mapped to Hamiltonian eigenvalue problem, then we can use a wide range of classical optimiser to solve the problem at hand.
