@@ -1,1 +1,20 @@
-\section{Price Prediction} \label{Sec: Price Prediction}
+\section{Price/Options Prediction} \label{Sec: Price Prediction}
+\emph{Options} are financial analysis techniques that allow that gives the investors insight to buy (call options) or to sell (put options) an asset at the prevailing price (strike) given the time frame (excersice window).
+Options are essential to various venture strategies, thus, understanding their properties is a vital objective of financial strategies \cite{kariyaOptionsFuturesOther2003}.
+
+Within a period of time, option contracts value at the expiration date is called \emph{payoff}.
+In option pricing, the goal is to estimate the payoff in the future, then discount that value to expect how it worth at the present.
+This discounted payoff value is called the \emph{fair value}.
+
+\begin{table*}
+    \centering
+    \begin{tabular}{||c c c||}
+        \hline
+                         & Single Asset              & Multiple Asset \\
+        \hline\hline
+        Path-independent & European Put/Call         & Basket Option  \\
+        Path-dependent   & \makecell{Barrier Options                  \\ \& Asian Options} & \makecell{Multi-asset \\ Barrier Options} \\
+        \hline
+    \end{tabular}
+    \caption{Example of different options types.}
+\end{table*}
