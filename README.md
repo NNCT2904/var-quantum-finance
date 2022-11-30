@@ -5,6 +5,7 @@
 - [Installation](#installation)
   - [Requirements](#requirements)
   - [Setup](#setup)
+- [Overall Progress of this Project:](#overall-progress-of-this-project)
 
 
 # This package overview
@@ -24,3 +25,15 @@ Note that the main document is `entrypoint.tex`.
 After you open the repository with Visual Studio Code, you can start writing.
 LaTeX workshop extension will build your project every time you save the document.
 The extension also gives you several tools such as viewing latex on a VSCode tab, counting words, analyzing project structures, greek symbols snippets, etc.
+
+# Overall Progress of this Project:
+- [x] Introduction
+- [x] Review of Quantum Machine Learning models
+- [x] Portfolio Optimisation
+- [x] Price/Option Prediction
+- [ ] Fraud Indicators
+- [ ] Credit Scoring
+- [ ] Financial Risk Assessment
+- [ ] ...
+- [ ] Contribution and Discussion
+- [ ] Conclusion
