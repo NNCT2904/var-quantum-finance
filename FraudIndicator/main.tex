@@ -15,3 +15,18 @@ The method is called Quantum Feature Important Selection; by utilising Quantum S
 The experiment on an quantum emulator have also shown that this novelty approach also make the Quantum Classifier to learn different pattern such that classical models found difficult to detect.
 
 \subsection{Quantum Kernel Component Analysis}
+One Class Principal Component Analysis is widely used for anomalies detection.
+The main idea of the algorithms is to calculate the difference between new datapoint $x^0$ and mean vector $\mu$ and the variance of the dataset.
+
+The mean vector $\mu$ and covariance matrix $\Sigma$ of a dataset of $M$ datapoints are:
+\begin{equation}
+    \mu = \frac{1}{M} \sum^M_{i=1}x^i ,\;\;
+    \Sigma = \frac{1}{M-1} \sum^M_{i=1} (x^i - \mu) (x^i-\mu)^T
+    \label{eqn: mean vector, covariance matrix}
+\end{equation}
+
+The proximity measure $f(x^0)$ quantifies how anomalous the datapoint $x^0$ is compared to the overall trend of the whole training dataset:
+\begin{equation}
+    f(x^0) = \left| x^0 - \mu \right|^2 - \left( x^0 - \mu \right)^T \Sigma\left( x^0 - \mu \right)
+\end{equation}
+A larger $f(x^0)$ indicates that the datapoint is more anomalous than another datapoint with smaller $f(x^0)$.
