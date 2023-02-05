@@ -6,7 +6,35 @@ For example before aproving a loan, banks often consider the borrower's income, 
 Credit scoring is a machine learning problem that predict future behavior given one's past experience.
 This can be formulated as a Classification problem, based on the features such as salary, age, economic indicator (micro, macro).
 The recent paper by Schetakis et. al. \cite{schetakisQuantumMachineLearning2022} has adopted an ensemble classifier that involves a hybrid neural network \cite{farhiClassificationQuantumNeural2018}, a data reuploading classifier \cite{perez-salinasOneQubitUniversal2021}, and a variational circuit as abovementioned.
+Compared to the ordinary quantum-classical hybrid system as described in section \ref{Sec: Hybrid Quantum - Classical System}, the ansatz receives inputs from a classical neural network, and folowed by another classical network to provide the final prediction.
+This design aims to achieve the best of both world, and being able to input more feature that exceed the number of qubits, thus bypass the limitaion of one qubit for each feature.
 
-Milne et. al. \cite{milneOptimalFeatureSelection2017} study further boost the performance of classification for credit scoring by verifying the accuracy of the training dataset.
-Feature selection can reduce the number of input to the model by selecting the features that are most correlated to the target.
-This can be done with quadratic unconstrained binary optimization algorithm, which scales exponentially with the number of data.
+Feature selection can reduce the number of input to the model and improve its accuracy by selecting the features that are most correlated to the target.
+This can be done with Quadratic Unconstrained Binary Optimization (QUBO) algorithm, which scales exponentially with the number of data.
+The study by Milne et. al. \cite{milneOptimalFeatureSelection2017} further boost the performance of classification for credit scoring by verifying the accuracy of the training dataset.
+The studied QUBO Feature Selection can select a smaller number of features in the dataset, compared to recursive feature elimination with and without wrapped cross-validation.
+
+For a matrix $U$ of $m$ rows (entries) and $n$ columns (features), and a vector $V$ that represent the record of decision had been made.
+The works of Milne et. al \cite{milneOptimalFeatureSelection2017} is summarised as developing a cost function to find a subset of columns within $U$ that are correlated with $V$, but are independent to each other.
+
+Let the correlation between two columns $i$ and $j$ be $\rho_{ij}$, we can measure the independent by negating the term:
+\begin{equation}
+    \sum^n_{j=1} \sum^n_{k=1; k\neq j} x_j x_k |\rho_{jk}|
+\end{equation}
+
+Let the correlation between column $i$ with the target $V$ be $\rho_{Vj}$
+We also need to measure the correlation of a column $i$ to the target $V$:
+\begin{equation}
+    \sum^n_{j=1} x_j |\rho_{Vj}|
+\end{equation}
+
+The cost function that is optimised at minimum is obtained by these two terms.
+The two terms are combined using a parameter $\alpha$ which represent the relative weighting of independence or influence, such that $0 \leq \alpha \leq 1$:
+\begin{equation}
+    f(\textbf{\text{x}}) = 
+    - \left[
+        \alpha \sum^n_{j=1} x_j |\rho_{Vj}| 
+        -(1-\alpha) \sum^n_{j=1} \sum^n_{k=1; k\neq j} x_j x_k |\rho_{jk}|
+    \right]
+\end{equation}
+For the vector $\textbf{\text{x}}$ is the collection of $n$ $x_j$ binaries, such that $x_j=1$ if the feature $j$ is within the subset, otherwise $x_j=0$.
