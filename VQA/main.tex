@@ -5,7 +5,7 @@ Such techniques that involves both quantum and classical components have been pr
 Those restrictions include the lack of fault-tolerance design, the number of the available qubits per processors, and the depth of executable quantum circuits the practical use cases.
 
 In more details, the hybrid techniques such as VQA allows development of \emph{parameterised circuits}, which act as a template and capable of receiving trainable parameters.
-Those parameters can be used to sample circuits result iteratively in a quantum processor, and consequently be refined by a classical computer \cite{cerezo2021variational}.
+Those parameters can be used to sample circuits result iteratively in a quantum processor, and consequently be refined by a classical computer \cite{cerezo_variational_2021}.
 In this way, we can rely on a wide range of classical optimisers to find the optimal circuit for a particular problem, as these optimisers only treat the variational circutis as black boxes capable of yielding outputs from inputs and the trainable parameters.
 
 
@@ -46,7 +46,7 @@ Figure \ref{Fig: VQA diagram} this hybrid architecture and demonstrate the train
         We use the quantum computer to calculate the cost function $C(\theta)$ for each step of optimisation.
         An optimisation algorithm in a classical computer is in charge to find the global minima in the cost landscape of $C(\theta)$, thus satisfy Eq. (\ref{Eqn: optimize theta with ansatz}).
         VQA's result is an approximation of the problem solution, which can be probability distribution, bit string, gate sequence and quantum operator.
-        Figure from Cerezo et al. \cite{cerezo2021variational}.
+        Figure from Cerezo et al. \cite{cerezo_variational_2021}.
     }
     \label{Fig: VQA diagram}
 \end{figure}
@@ -56,5 +56,5 @@ Figure \ref{Fig: VQA diagram} this hybrid architecture and demonstrate the train
 
 \input{VQA/CostFunc.tex}
 \input{VQA/Ansatze.tex}
-\input{VQA/Gradients.tex}
+% \input{VQA/Gradients.tex}
 \input{VQA/Optimisers.tex}
